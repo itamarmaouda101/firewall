@@ -1,5 +1,32 @@
 from scapy.all import *
 import sys
+import os
+import subprocess
+import platform
+os = ""
+def set_os():
+    if ("Linux" in platform.platform()):
+        os = "Linux"
+    if ("Windows" in platform.platform()):
+        os = "Windows"
+         
+def get_process():
+    if ("Linux" in os):
+        #acat as linux
+        subprocess.run("ps")
+    if ("Windows" in os):
+        subprocess.run("")
+list_of_process_using_network_with_info=[]
+list_of_process_using_network_without_info=[]
+def get_process_using_the_network():
+    lsof = subprocess.check_output(["lsof", "-i"], stderr= subprocess.STDOUT)
+    list_of_process_using_network_with_info = str(lsof).split("\\n")
+    for proc in list_of_process_using_network_with_info:
+        list_of_process_using_network_without_info.append(proc.split("    "))
+
+
+
+
 
 ip_src_block = []
 ip_dst_block = []
@@ -51,4 +78,6 @@ def hundule(packet):
 #sniff(iface=conf.iface, prn=hundule, filter = "ip")
 
 if __name__ == "__main__":
+    set_os()
+    get_process_using_the_network()
     set_credensials()
