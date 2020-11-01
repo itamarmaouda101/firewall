@@ -4,10 +4,20 @@
     <title>Set Network Settings</title>
 </head> 
 <body>
-
-    <form action="../main.py">
+    <style>body{
+        background-image: url(./backround.jpeg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size:  100% 100%;
+    
+    
+    }</style>
+    <h1>Network Settings</h1>
+    <h2>enter new creden credentials</h2>
+    <form action="../main.py"><b>
     <label for="ip_src_to_block">ip src to block:</label>
     <input type="text" id="ip_src_block" name="ip_src_block" value="">
+    
     <label for="ip_dst_to_block">ip dst to block:</label>
     <input type="text" id="ip_dst_block" name="ip_dst_block" value="">
     <label for="port_src_to_block">port src to block:</label>
@@ -16,7 +26,7 @@
     <input type="text" id="port_dst_block" name="port_dst_block" value="">
     <label for="protocol_to_block">protocol to block:</label>
     <input type="text" id="protocol_to_block" name="protocol_to_block" value="">
-    <input type="submit" value="submit">
+    <input type="submit" value="submit"></b>
     </form>
 </body>
 
