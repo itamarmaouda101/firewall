@@ -4,6 +4,9 @@ import os
 import subprocess
 import platform
 os = ""
+list_of_process_using_network_with_info=[]
+list_of_process_using_network_without_info=[]
+
 def set_os():
     if ("Linux" in platform.platform()):
         os = "Linux"
@@ -15,17 +18,18 @@ def get_process():
         #acat as linux
         subprocess.run("ps")
     if ("Windows" in os):
-        subprocess.run("")
-list_of_process_using_network_with_info=[]
-list_of_process_using_network_without_info=[]
-def get_process_using_the_network():
+        subprocess.run("tasklist")
+
+def get_process_using_the_network_linux():
     lsof = subprocess.check_output(["lsof", "-i"], stderr= subprocess.STDOUT)
     list_of_process_using_network_with_info = str(lsof).split("\\n")
     for proc in list_of_process_using_network_with_info:
         list_of_process_using_network_without_info.append(proc.split("    "))
-
-
-
+def get_process_using_the_network_windows():
+    netstat = subprocess.check_output(["netstat", "-o -n"])
+    
+def kill_by_pid():
+    pass
 
 
 ip_src_block = []
